@@ -27,7 +27,8 @@ def decrypt_bloc(previous_block, block_to_decipher):
             padding_value = block_size - guess_pos
 
             #If we are at the last byte of a bloc and guess_value == padding value,
-            #we send the original ciphertext so we skip this case
+            #we send the original ciphertext. So if the original ciphertext is a valid padding
+            #value or if we are at the last block we will get a wrong guess.
             if guess_pos == (block_size - 1) and guess_value == padding_value:
                 continue
 
